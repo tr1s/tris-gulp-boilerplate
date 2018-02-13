@@ -1,0 +1,36 @@
+{
+  "name": "tris.codes",
+  "version": "1.0.0",
+  "description": "Personal portfolio website.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tr1s/tris.codes-psd.git"
+  },
+  "author": "Tristan Michael Lawrence",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tr1s/tris.codes/issues"
+  },
+  "homepage": "https://github.com/tr1s/tris.codes#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.18.13",
+    "critical": "^1.1.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-babel-minify": "^0.2.0",
+    "gulp-cache": "^1.0.1",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-imagemin": "^4.0.0",
+    "gulp-sass": "^3.1.0"
+  },
+  "dependencies": {}
+}

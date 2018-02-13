@@ -1,0 +1,45 @@
+html {
+	font-size: 62.5%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body::-webkit-scrollbar {
+    width: .6rem;
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: #00f;
+	background: #ff0;
+	outline: 1px solid slategrey;
+}
+
+h1, h2, h3, h4, h5, h6, p, a {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	width: 100%;
+	display: block;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+a {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+a:hover {}

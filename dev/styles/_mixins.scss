@@ -1,0 +1,46 @@
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "x-small" {
+    @media (max-width: 669px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "small" {
+    @media (max-width: 769px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "medium" {
+    @media (max-width: 869px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "large" {
+    @media (max-width: 969px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "wrapper" {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "big" {
+    @media (max-width: 1369px) {
+      @content;
+    }
+  }
+
+  @else {
+    @media ($breakpoint) {
+      @content;
+    }
+  }
+}
+
+// HOW TO CALL THE MIXIN
+// @include respond-to("wrapper"){}
