@@ -8,7 +8,6 @@ $(function () {
 });
 
 // WEB FONT LOADER // ELIMINATES RENDER BLOCKING WEBFONTS
-// https://github.com/typekit/webfontloader
 
 // WebFont.load({
 //   google: {

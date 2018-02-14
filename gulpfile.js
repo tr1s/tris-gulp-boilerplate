@@ -48,8 +48,7 @@ gulp.task('critical', function () {
         css: 'public/styles/styles.css',
         dest: 'index-critical.html',
         minify: true,
-        extract: true,
-        ignore: ['@font-face']
+        extract: true
     });
 });
 
@@ -75,7 +74,7 @@ gulp.task('images', () =>
 // CONCAT ALL JS SCRIPTS INTO ALL.JS // CHANGE SRC PATHS TO REFLECT YOUR SCRIPTS
 // ES6 TO ES5 VIA BABEL, THEN MINIFES
 gulp.task('scripts', () => {
-    gulp.src(['dev/scripts/smooth-scroll.js', 'dev/scripts/vanilla-tilt.babel.min.js', 'dev/scripts/script.js'])
+    gulp.src(['dev/scripts/smooth-scroll.js', 'dev/scripts/script.js'])
         .pipe(concat('all.js'))
         .pipe(babel({
             presets: ['env']
