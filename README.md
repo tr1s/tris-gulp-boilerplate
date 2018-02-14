@@ -1,8 +1,6 @@
 # tris-gulp-boilerplate — less think, more code 👩‍💻👨‍💻
 
-### This [gulp.js](https://gulpjs.com/) boilerplate takes all the hassle out of setting up a project and has all the necessary tools and optimizations ready to go for your website.
-
-##### It will help you rank higher on the web by solving issues that arise with when running your site through [Google Page Speed Insights](https://developers.google.com/speed/pagespeed/insights/), those issues being:
+#### This [gulp.js](https://gulpjs.com/) boilerplate takes all the hassle out of setting up a project and has all the necessary tools and optimizations ready to go for your website. It will help you rank higher on the web by solving issues that arise with when running your site through [Google Page Speed Insights](https://developers.google.com/speed/pagespeed/insights/), those issues being:
 
 1. `Eliminating render-blocking JavaScript and CSS in above-the-fold content`
 3. `Minifying HTML/CSS/JavaScript`
@@ -10,7 +8,7 @@
 5. `Prioritizing Visible above-the-fold content`
 5. `Reducing server response time`
 
-_`Enabling Compression` and `Leveraging Browser Caching` are achieved through methods unrelated to this boilerplate._
+_**`Enabling Compression`** and **`Leveraging Browser Caching`** are achieved through methods unrelated to this boilerplate. Read [this](https://developers.google.com/speed/docs/insights/EnableCompression) and [this](https://developers.google.com/speed/docs/insights/LeverageBrowserCaching) for more info. You won't achieve a 100/100 score until you implement these, but you'll at least be up to 90 without them!_
 
 ### Quick start:
 
@@ -22,9 +20,7 @@ In the terminal, navigate to a location where you want to start your project, th
 
 You're all set, start coding!
 
-###### _Take a look at the `gulpfile.js` and read below for a better understanding of what's going on under the hood. You won't hit 100/100 on Google Page Insights right away, you'll have to look into enabling compression and leveraging browser caching on your own. Methods of implementing those features may be different depending on your hosting provider._
-
-Follow me on [twitter](https://twitter.com/triscodes) if you'd like.
+**_Take a look at the `gulpfile.js` and read below for a better understanding of what's going on under the hood._**
 
 ### Features:
 
@@ -34,6 +30,16 @@ Follow me on [twitter](https://twitter.com/triscodes) if you'd like.
 4. `Image optimization`
 5. `Prioritize Above the fold content`
 6. `Webfont loading`
+
+### Gulp tasks explained:
+
+```javascript
+const gulp = require('gulp');
+```
+
+Keep an eye on the ordering of the `.pipe` to have a clear idea of what's going on in these tasks that are in the _gulpfile.js_
+
+___
 
 #### Browser-Sync + Live Reloading
 
@@ -60,26 +66,48 @@ gulp.task('watch', ['browser-sync'], () => {
 });
 ```
 
-The _watch_ task watches for changes on all the .html, .scss, and .js files, while also recompiling the .scss and .js before it triggers the live reload. **The _html_ doesn't need to recompile, hence why it only has _reload_ beside it. The _scss_ and _scripts_ task have the _reload_ piped at the end of each respective task like so -** `.pipe(reload({ stream: true }))`
+The _watch_ task watches for changes on all the .html, .scss, and .js files, while also recompiling the .scss and .js before it triggers the live reload. **The _html_ doesn't need to recompile, hence why it only has _reload_ beside it. The _sass_ and _scripts_ task have the _reload_ piped at the end of each respective task like so -** `.pipe(reload({ stream: true }))`
 
-#### 2. Minification + autoprefixing
+#### HTML
 
 ```javascript
-const htmlmin = require('gulp-htmlmin');
-const cleanCSS = require('gulp-clean-css');
-const minify = require('gulp-babel-minify');
-const autoprefixer = require('gulp-autoprefixer');
+gulp.task('html', function () {
+    return gulp.src('*.html')
+        .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(gulp.dest('public/'))
+});
 ```
 
-`.pipe(htmlmin({ collapseWhitespace: true }))` triggers the minification on the html task.
+The html task grabs the source _index.html_ from the root folder, [minifies](https://www.npmjs.com/package/gulp-htmlmin) it, then outputs minified _index.html_ in the public/ folder.
 
-`.pipe(autoprefixer('last 2 versions'))` triggers autoprexing before `.pipe(cleanCSS())` triggers minification on the sass task.
+#### Sass
 
-`.pipe(minify({ mangle: { keepClassName: true }}))` triggers minification on the scripts task.
+```javascript
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const cleanCSS = require('gulp-clean-css');
+```
 
-#### 3. JavaScript ES6 to ES5 conversion + concatenation
+```javascript
+gulp.task('sass', () => {
+    return gulp.src('dev/styles/styles.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer('last 2 versions'))
+        .pipe(cleanCSS())
+        .pipe(gulp.dest('public/styles/'))
+        .pipe(reload({ stream: true }))
+});
+```
 
-`const babel = require('gulp-babel');`
+The [sass](https://www.npmjs.com/package/gulp-sass) task  grabs the source .scss file and converts it all to css, then [autoprefixes](https://www.npmjs.com/package/gulp-autoprefixer) the css, then [minifies](https://www.npmjs.com/package/gulp-clean-css) the css, then outputs a _styles.css_ file inside the public/styles/ folder for you to link from the _index.html_. After all that it reloads the page on save.
+
+#### Scripts
+
+```javascript
+const concat = require('gulp-concat');
+const babel = require('gulp-babel');
+const minify = require('gulp-babel-minify');
+```
 
 ```javascript
 gulp.task('scripts', () => {
@@ -98,7 +126,7 @@ gulp.task('scripts', () => {
 });
 ```
 
-`.pipe(concat('all.js'))` concats all your js files into `all.js` and then `.pipe(babel({ presets: ['env'] }))` triggers ES6 to ES5 conversion on the scripts task. Make sure if you add more .js files, you add them to the `gulp.src([])`. Remember, order matters.
+The scripts task grabs the source JavaScript files _(order matters depending on what scripts are dependent on what)_ and [concatenates](https://www.npmjs.com/package/gulp-concat) them to _all.js_ — this reduces server response time because the browser will only need to grab one .js file instead of many. The task then uses [babel](https://www.npmjs.com/package/gulp-babel) to convert _all.js_ from ES6 to ES5, then [minifies](https://www.npmjs.com/package/gulp-babel-minify), then outputs to public/scripts/ while finally reloading the page on save.
 
 #### Image optimization
 
@@ -120,7 +148,9 @@ Again, this is different from [compression](https://developers.google.com/speed/
 
 #### Webfont loading
 
-`<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>`
+```javascript
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+```
 
 ```javascript
 WebFont.load({
@@ -157,3 +187,7 @@ gulp.task('critical', function () {
 ```
 
 The _index-critial.html_ will generate in the public folder, simply rename it to _index.html_ and upload it to your hosting server if you'd like to use this feature. Here's their [GitHub](https://github.com/addyosmani/critical) for further reading.
+
+___
+
+Hope this helped! Follow me on [twitter](https://twitter.com/triscodes) if you'd like.
