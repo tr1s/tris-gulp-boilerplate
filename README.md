@@ -1,49 +1,49 @@
-## tris-gulp-boilerplate — Less think, more code 👩‍💻👨‍💻
+# tris-gulp-boilerplate — less think, more code 👩‍💻👨‍💻
 
-#### This [gulp.js](https://gulpjs.com/) boilerplate takes all the hassle out of setting up a project and has all the necessary tools and optimizations ready to go.
+#### This [gulp.js](https://gulpjs.com/) boilerplate takes all the hassle out of setting up a project and has all the necessary tools and optimizations ready to go for your website.
 
-##### It will fix common issues that arise via [Google Page Speed Insights](https://developers.google.com/speed/pagespeed/insights/) and will help your Google ranking on the web:
+###### It will help you rank higher on the web by solving issues that arise with when running your site through [Google Page Speed Insights](https://developers.google.com/speed/pagespeed/insights/), those issues being:
 
 1. `Eliminating render-blocking JavaScript and CSS in above-the-fold content`
 3. `Minifying HTML/CSS/JavaScript`
 4. `Optimizing images`
 5. `Prioritizing Visible above-the-fold content`
-5. `Reduce server response time`
+5. `Reducing server response time`
 
 _`Enabling Compression` and `Leveraging Browser Caching` are achieved through methods unrelated to this boilerplate._
 
-### Quick start
+#### Quick start:
 
-In the terminal where you want to start your project:
+In the terminal, navigate to a location where you want to start your project, then:
 
 1. `git clone https://github.com/tr1s/tris-gulp-boilerplate.git`
 2. `npm install`
 3. `gulp`
 
-You're all set. Starting building your website.
+You're all set, start coding!
 
-Take a look at the `gulpfile.js`, or read below for a better understanding of what's going on under the hood. You won't hit 100/100 on Google Page Insights right away, you'll have to look into enabling compression and leveraging browser caching on your own. Methods of implementing those features may be different depending on your hosting provider.
+_Take a look at the `gulpfile.js`, or read below for a better understanding of what's going on under the hood. You won't hit 100/100 on Google Page Insights right away, you'll have to look into enabling compression and leveraging browser caching on your own. Methods of implementing those features may be different depending on your hosting provider._
 
 Follow me on [twitter](https://twitter.com/triscodes) if you'd like.
 
-### Features:
+#### Features:
 
 1. `Browser-Sync`
-2. `Live Reloading`
+2. `Live reloading`
 3. `HTML/CSS/JavaScript minification`
 4. `ES6 to ES5 conversion`
 5. `JavaScript concatenation`
 6. `Image optimization`
 7. `Webfont loading`
 
-### Features Explained:
-
 ##### 1. Browser-Sync / Live Reloading
 
 ```javascript
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
+```
 
+```javascript
 gulp.task('browser-sync', () => {
     browserSync.init({
         server: {

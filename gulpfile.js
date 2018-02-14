@@ -12,13 +12,6 @@ const htmlmin = require('gulp-htmlmin');
 const cache = require('gulp-cache');
 const concat = require('gulp-concat');
 
-// WATCHING FOR FILE CHANGES, THEN RELOADS
-gulp.task('watch', ['browser-sync'], () => {
-    gulp.watch('dev/styles/**/*.scss', ['sass'])
-    gulp.watch('*.html', reload)
-    gulp.watch('dev/scripts/**/*.js', ['scripts'])
-});
-
 // BROWSER-SYNC / LIVE RELOADING
 gulp.task('browser-sync', () => {
     browserSync.init({
@@ -26,6 +19,13 @@ gulp.task('browser-sync', () => {
             baseDir: ''
         },
     })
+});
+
+// WATCHING FOR FILE CHANGES, THEN RELOADS
+gulp.task('watch', ['browser-sync'], () => {
+    gulp.watch('dev/styles/**/*.scss', ['sass'])
+    gulp.watch('*.html', reload)
+    gulp.watch('dev/scripts/**/*.js', ['scripts'])
 });
 
 // HTML MINIFICATION
