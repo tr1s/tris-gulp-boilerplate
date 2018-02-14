@@ -12,7 +12,7 @@ const htmlmin = require('gulp-htmlmin');
 const cache = require('gulp-cache');
 const concat = require('gulp-concat');
 
-// WATCHING FOR FILE CHANGES
+// WATCHING FOR FILE CHANGES, THEN RELOADS
 gulp.task('watch', ['browser-sync'], () => {
     gulp.watch('dev/styles/**/*.scss', ['sass'])
     gulp.watch('*.html', reload)
@@ -35,14 +35,16 @@ gulp.task('html', function () {
         .pipe(gulp.dest('public/'))
 });
 
-// HTML VIEWPORT INLINE STYLES WITH CRTITCAL
+// HERO/VIEWPORT INLINE STYLES WITH CRTITCAL
+// RENAME INDEX-CRITIAL TO INDEX.HTML AND ADD TO SERVER IF YOU WANT TO USE THIS FEATURE
+// OTHERWISE JUST USE THE MINIFIED INDEX.HTML IN THE PUBLIC FOLDER
 gulp.task('critical', function () {
     critical.generate({
         inline: true,
         base: 'public/',
         src: 'index.html',
-        width: 700,
-        height: 400,
+        width: 1300,
+        height: 900,
         css: 'public/styles/styles.css',
         dest: 'index-critical.html',
         minify: true,
@@ -70,7 +72,8 @@ gulp.task('images', () =>
         .pipe(gulp.dest('public/images/'))
 );
 
-// ES6 TO ES5
+// CONCAT ALL JS SCRIPTS INTO ALL.JS // CHANGE SRC PATHS TO REFLECT YOUR SCRIPTS
+// ES6 TO ES5 VIA BABEL, THEN MINIFES
 gulp.task('scripts', () => {
     gulp.src(['dev/scripts/smooth-scroll.js', 'dev/scripts/vanilla-tilt.babel.min.js', 'dev/scripts/script.js'])
         .pipe(concat('all.js'))
@@ -87,4 +90,5 @@ gulp.task('scripts', () => {
 });
 
 // ALL TASKS INTO ONE INIT
+// ACTIVATE BUT RUNNING 'GULP' IN THE TERMINAL
 gulp.task('default', ['browser-sync', 'html', 'sass', 'scripts', 'critical', 'images', 'watch']);

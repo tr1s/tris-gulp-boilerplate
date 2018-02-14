@@ -1,21 +1,21 @@
 {
-  "name": "tris.codes",
+  "name": "tris-gulp-boilerplate",
   "version": "1.0.0",
-  "description": "Personal portfolio website.",
+  "description": "Hit the ground running with this gulp boilerplate that has all the necessary tools and optimizations.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tr1s/tris.codes-psd.git"
+    "url": "git+https://github.com/tr1s/tris-gulp-boilerplate.git"
   },
   "author": "Tristan Michael Lawrence",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tr1s/tris.codes/issues"
+    "url": "https://github.com/tr1s/tris-gulp-boilerplate/issues"
   },
-  "homepage": "https://github.com/tr1s/tris.codes#readme",
+  "homepage": "https://github.com/tr1s/tris-gulp-boilerplate#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
