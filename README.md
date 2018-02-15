@@ -1,18 +1,18 @@
 # tris-gulp-boilerplate — less think, more code 👩‍💻👨‍💻
 
-#### This [gulp.js](https://gulpjs.com/) boilerplate takes all the hassle out of setting up a project and has all the necessary tools and optimizations ready to go for your website. It will help you rank higher on the web by solving issues that arise with when running your site through [Google Page Speed Insights](https://developers.google.com/speed/pagespeed/insights/), those issues being:
+#### This [gulp.js](https://gulpjs.com/) boilerplate takes all the hassle out of setting up a project — it has all the necessary tools and optimizations ready to go for your website. It will help you rank higher on Google by solving issues that arise when testing your site on [Google Page Speed Insights](https://developers.google.com/speed/pagespeed/insights/), those issues being:
 
-1. `Eliminating render-blocking JavaScript and CSS in above-the-fold content`
-3. `Minifying HTML/CSS/JavaScript`
-4. `Optimizing images`
-5. `Prioritizing Visible above-the-fold content`
-5. `Reducing server response time`
+* `Eliminating render-blocking JavaScript and CSS in above-the-fold content`
+* `Minifying HTML/CSS/JavaScript`
+* `Optimizing images`
+* `Prioritizing Visible above-the-fold content`
+* `Reducing server response time`
 
-_**`Enabling Compression`** and **`Leveraging Browser Caching`** are achieved through methods unrelated to this boilerplate. Read [this](https://developers.google.com/speed/docs/insights/EnableCompression) and [this](https://developers.google.com/speed/docs/insights/LeverageBrowserCaching) for more info. You won't achieve a 100/100 score until you implement these, but you'll at least be up to 90 without them!_
+_**`Enabling Compression`** and **`Leveraging Browser Caching`** are achieved through methods unrelated to this boilerplate. Read [this](https://developers.google.com/speed/docs/insights/EnableCompression) and [this](https://developers.google.com/speed/docs/insights/LeverageBrowserCaching) for more info. You won't achieve a 100/100 optimization score until you implement these, but you'll at least be up to 90 without them!_
 
 ### Quick start:
 
-In the terminal, navigate to a location where you want to start your project, then:
+You need [git](https://git-scm.com/) and [node.js](https://nodejs.org/) on your computer before running
 
 1. `git clone https://github.com/tr1s/tris-gulp-boilerplate.git`
 2. `npm install`
@@ -20,26 +20,27 @@ In the terminal, navigate to a location where you want to start your project, th
 
 You're all set, start coding!
 
-**_Take a look at the `gulpfile.js` and read below for a better understanding of what's going on under the hood._**
+**_Take a look at the `gulpfile.js` and/or read below for a better understanding of what's going on under the hood._**
 
 ### Features:
 
 1. `Browser-Sync` + `Live reloading`
-2. `HTML/CSS/JavaScript minification` + `autoprefixing`
-3. `JavaScript ES6 to ES5 conversion` + `concatenation`
-4. `Image optimization`
-5. `Prioritize Above the fold content`
-6. `Webfont loading`
+2. `HTML/CSS/JavaScript minification`
+3. `CSS autoprefixing`
+4. `JavaScript ES6 to ES5 conversion` + `concatenation`
+5. `Image optimization`
+6. `Prioritize Above the fold content`
+7. `Webfont loading`
 
 ### Gulp tasks explained:
-
-```javascript
-const gulp = require('gulp');
-```
 
 Keep an eye on the ordering of the `.pipe` to have a clear idea of what's going on in these tasks that are in the _gulpfile.js_
 
 ___
+
+```javascript
+const gulp = require('gulp');
+```
 
 #### Browser-Sync + Live Reloading
 
@@ -69,6 +70,10 @@ gulp.task('watch', ['browser-sync'], () => {
 The _watch_ task watches for changes on all the .html, .scss, and .js files, while also recompiling the .scss and .js before it triggers the live reload. **The _html_ doesn't need to recompile, hence why it only has _reload_ beside it. The _sass_ and _scripts_ task have the _reload_ piped at the end of each respective task like so -** `.pipe(reload({ stream: true }))`
 
 #### HTML
+
+```javascript
+const htmlmin = require('gulp-htmlmin');
+```
 
 ```javascript
 gulp.task('html', function () {
@@ -190,4 +195,4 @@ The _index-critial.html_ will generate in the public folder, simply rename it to
 
 ___
 
-Hope this helped! Follow me on [twitter](https://twitter.com/triscodes) if you'd like.
+Hope this helped! Follow me on [twitter](https://twitter.com/triscodes) if you'd like. 💎✨🌸
