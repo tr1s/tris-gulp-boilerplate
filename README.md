@@ -10,6 +10,8 @@
 
 _**`Enabling Compression`** and **`Leveraging Browser Caching`** are achieved through methods unrelated to this boilerplate. Read [this](https://developers.google.com/speed/docs/insights/EnableCompression) and [this](https://developers.google.com/speed/docs/insights/LeverageBrowserCaching) for more info. You won't achieve a 100/100 optimization score until you implement these, but you'll at least be up to 90 without them!_
 
+___
+
 ### Quick start:
 
 You need [git](https://git-scm.com/) and [node.js](https://nodejs.org/) on your computer before running
