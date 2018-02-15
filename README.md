@@ -191,7 +191,7 @@ gulp.task('critical', function () {
 });
 ```
 
-The _index-critial.html_ will generate in the public folder, simply rename it to _index.html_ and upload it to your hosting server if you'd like to use this feature. Here's their [GitHub](https://github.com/addyosmani/critical) for further reading.
+The _index-critical.html_ will generate in the public folder, simply rename it to _index.html_ and upload it to your hosting server if you'd like to use this feature. Here's their [GitHub](https://github.com/addyosmani/critical) for further reading.
 
 ___
 
