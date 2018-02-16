@@ -1,11 +1,13 @@
 # tris-gulp-boilerplate — less think, more code 👩‍💻👨‍💻
 
+![](https://i.imgur.com/PTYWfdv.png)
+
 #### This [gulp.js](https://gulpjs.com/) boilerplate takes all the hassle out of setting up a project — it has all the necessary tools and optimizations ready to go for your website. It will help you rank higher on Google by solving issues that arise when testing your site on [Google Page Speed Insights](https://developers.google.com/speed/pagespeed/insights/), those issues being:
 
 * `Eliminating render-blocking JavaScript and CSS in above-the-fold content`
 * `Minifying HTML/CSS/JavaScript`
 * `Optimizing images`
-* `Prioritizing Visible above-the-fold content`
+* `Prioritizing visible above-the-fold content`
 * `Reducing server response time`
 
 _**`Enabling Compression`** and **`Leveraging Browser Caching`** are achieved through methods unrelated to this boilerplate. Read [this](https://developers.google.com/speed/docs/insights/EnableCompression) and [this](https://developers.google.com/speed/docs/insights/LeverageBrowserCaching) for more info. You won't achieve a 100/100 optimization score until you implement these, but you'll at least be up to 90 without them!_
@@ -31,7 +33,7 @@ You're all set, start coding!
 3. `CSS autoprefixing`
 4. `JavaScript ES6 to ES5 conversion` + `concatenation`
 5. `Image optimization`
-6. `Prioritize Above the fold content`
+6. `Prioritize above-the-fold content with inline styles`
 7. `Webfont loading`
 
 ### Gulp tasks explained:
@@ -69,7 +71,7 @@ gulp.task('watch', ['browser-sync'], () => {
 });
 ```
 
-The _watch_ task watches for changes on all the .html, .scss, and .js files, while also recompiling the .scss and .js before it triggers the live reload. **The _html_ doesn't need to recompile, hence why it only has _reload_ beside it. The _sass_ and _scripts_ task have the _reload_ piped at the end of each respective task like so -** `.pipe(reload({ stream: true }))`
+The _watch_ task watches for changes on all the .html, .scss, and .js files, while also recompiling the .scss and .js before it triggers the live reload. **The _html_ doesn't need to recompile, hence why it only has _reload_ beside it. The _sass_ and _scripts_ task have the _reload_ piped at the end of each respective gulp task like so -** `.pipe(reload({ stream: true }))`
 
 #### HTML
 
@@ -151,7 +153,7 @@ gulp.task('images', () =>
 );
 ```
 
-Again, this is different from [compression](https://developers.google.com/speed/docs/insights/EnableCompression).
+This task grabs all images in the dev/images/ folder, reduces the file size without altering the quality of the images, then outputs the new images in the public/images folder. Again, this is different from [compression](https://developers.google.com/speed/docs/insights/EnableCompression).
 
 #### Webfont loading
 
