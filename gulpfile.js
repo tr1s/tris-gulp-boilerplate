@@ -16,7 +16,7 @@ const concat = require('gulp-concat');
 gulp.task('browser-sync', () => {
     browserSync.init({
         server: {
-            baseDir: ''
+            baseDir: './'
         },
     })
 });
